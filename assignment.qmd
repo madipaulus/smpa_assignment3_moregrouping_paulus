@@ -40,11 +40,14 @@ impeach <- readRDS("impeach.rds")
 
 Write your code using grouping in the chunks below to help answer the following questions.
 
-1)  How many members in the dataset favor impeachment vs. not (using the `for_impeachment` column)?
+1)  How many members in the data set favor impeachment vs. not (using the `for_impeachment` column)?
+Here, I grouped by for impeach as instructed and then summarized count contributions to ge the totals for those who voted yes vs. no. I found that 209 members favor impeachment while 26 members do not. 
 
 ```{r}
 
-
+impeach %>%
+  group_by(for_impeachment) %>% 
+  summarise(count_contribs = n())
 
 
 
@@ -57,7 +60,12 @@ You'll want to ensure you do the grouping on both columns together, e.g. `group_
 
 ```{r}
 
+impeach %>%
+  filter(party == "D") %>%
+  group_by(for_impeachment, gdp_above_national) %>%
+summarise(count_contribs = n())
 
+  
 
 
 
