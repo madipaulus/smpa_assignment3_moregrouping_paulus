@@ -81,7 +81,10 @@ summarise(count_contribs = n())
 ```{r}
 
 
-
+impeach %>%
+  filter(party == "D") %>%
+  group_by(for_impeachment, pct_bachelors_compared_to_national) %>%
+summarise(count_contribs = n())
 
 
 
@@ -99,8 +102,9 @@ In other words, you want to end up with the calculated mean for what that percen
 
 ```{r}
 
-
-
+impeach %>%
+  group_by(for_impeachment) %>%
+  summarise(mean(pct_bachelors))
 
 
 
